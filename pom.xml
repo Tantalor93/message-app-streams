@@ -12,6 +12,7 @@
     <modules>
         <module>message-app-streams-processor</module>
         <module>message-app-streams-consumer</module>
+        <module>message-app-streams-joiner</module>
     </modules>
 
 

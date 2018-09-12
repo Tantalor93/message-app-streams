@@ -39,3 +39,24 @@ spec:
       - name: message-app-streams-consumer-container
         image: tantalor93/message-app-streams-consumer
         imagePullPolicy: Always
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: message-app-streams-joiner-deployment
+  labels:
+    app: message-app-streams-joiner
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: message-app-streams-joiner
+  template:
+    metadata:
+      labels:
+        app: message-app-streams-joiner
+    spec:
+      containers:
+      - name: message-app-streams-joiner-container
+        image: tantalor93/message-app-streams-joiner
+        imagePullPolicy: Always
