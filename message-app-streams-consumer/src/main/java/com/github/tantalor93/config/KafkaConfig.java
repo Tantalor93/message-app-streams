@@ -1,6 +1,7 @@
 package com.github.tantalor93.config;
 
 import org.apache.kafka.clients.consumer.ConsumerConfig;
+import org.apache.kafka.common.serialization.LongDeserializer;
 import org.apache.kafka.common.serialization.StringDeserializer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -23,13 +24,13 @@ public class KafkaConfig {
                 "benky-kafka:9092");
         props.put(
                 ConsumerConfig.GROUP_ID_CONFIG,
-                "message-app-consumers");
+                "message-app-streams-consumer");
         props.put(
                 ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG,
                 StringDeserializer.class);
         props.put(
                 ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG,
-                StringDeserializer.class);
+                LongDeserializer.class);
         return new DefaultKafkaConsumerFactory<>(props);
     }
 

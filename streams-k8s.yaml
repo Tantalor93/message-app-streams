@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: message-app-streams-processor-deployment
+  labels:
+    app: message-app-streams-processor
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: message-app-streams-processor
+  template:
+    metadata:
+      labels:
+        app: message-app-streams-processor
+    spec:
+      containers:
+      - name: message-app-streams-processor-container
+        image: tantalor93/message-app-streams-processor
+        imagePullPolicy: Always
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: message-app-streams-consumer-deployment
+  labels:
+    app: message-app-streams-consumer
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: message-app-streams-consumer
+  template:
+    metadata:
+      labels:
+        app: message-app-streams-consumer
+    spec:
+      containers:
+      - name: message-app-streams-consumer-container
+        image: tantalor93/message-app-streams-consumer
+        imagePullPolicy: Always

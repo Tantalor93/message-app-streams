@@ -12,7 +12,7 @@ public class Application {
     }
 
     @KafkaListener(topics = "processed-test")
-    public void listen(String message) {
+    public void listen(Long message) {
         System.out.println("Received processed message: " + message);
     }
 }
